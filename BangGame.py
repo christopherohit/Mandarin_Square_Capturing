@@ -111,20 +111,20 @@ class Table:
         USER_0: {} USER_1: {}
         '''.format(
             " *" if self.state[0][1] == 1 else " ",
-            self.state[11][0] if self.state[11][0] else '',
-            self.state[10][0] if self.state[10][0] else '',
-            self.state[9][0] if self.state[9][0] else '',
-            self.state[8][0] if self.state[8][0] else '',
-            self.state[7][0] if self.state[7][0] else '',
-            " * " if self.state[6][1] == 1 else " ",
-            self.state[0][0] if self.state[0][0] else '',
-            self.state[6][0] if self.state[6][0] else '',
-            self.state[1][0] if self.state[1][0] else '',
-            self.state[2][0] if self.state[2][0] else '',
-            self.state[3][0] if self.state[3][0] else '',
-            self.state[4][0] if self.state[4][0] else '',
-            self.state[5][0] if self.state[5][0] else ''.
-            self.player_point[0], self.player_points[1]
+                self.state[11][0] if self.state[11][0] else '',
+                self.state[10][0] if self.state[10][0] else '',
+                self.state[9][0] if self.state[9][0] else '',
+                self.state[8][0] if self.state[8][0] else '',
+                self.state[7][0] if self.state[7][0] else '',
+                " *" if self.state[6][1] == 1 else " ",  
+                self.state[0][0] if self.state[0][0] else '',
+                self.state[6][0] if self.state[6][0] else '',
+                self.state[1][0] if self.state[1][0] else '',
+                self.state[2][0] if self.state[2][0] else '',
+                self.state[3][0] if self.state[3][0] else '',
+                self.state[4][0] if self.state[4][0] else '',
+                self.state[5][0] if self.state[5][0] else '',
+                self.player_points[0], self.player_points[1]
         )
 
     def finished(self):
