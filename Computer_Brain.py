@@ -29,7 +29,7 @@ class Computer_Brain:
 
         if finished(state):
             player_point[0] += sum([i[0] for i in state[1:6]])
-            player_point[2] += sum([i[0] for i in state[7:12]])
+            player_point[1] += sum([i[0] for i in state[7:12]])
 
             if player_point[0] > player_point[1]:
                 return (True, -self.INF if self.player_id else self.INF)
