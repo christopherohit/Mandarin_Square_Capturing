@@ -89,7 +89,7 @@ class Computer_Brain:
                     next_pos = (next_pos + inc) % 12
                 state[cur_pos][0] //= 12
 
-    def alpha_beta(self , state_game , cur_point , depth = 3):
+    def alpha_beta(self , state_game , cur_point , depth = 3): # Alpha_Beta Algorithms
         #Depth Limit search
         alpha, beta = -self.INF, self.INF
 
@@ -139,7 +139,7 @@ class Computer_Brain:
             alpha = max(alpha,score)
         return self.get_available_move(state_game , self.player_id)[0] if opt_action == None else opt_action
 
-    def expectimax(self ,state_game, cur_point, depth=  3):
+    def expectimax(self ,state_game, cur_point, depth=  3): # Expectimax Algorithm
         def generate_agent(state_game , cur_point, depth, idx_agent = 0):
             is_end = self.Condition_Ending(state_game, cur_point)
             if is_end[0] or depth == 0:
