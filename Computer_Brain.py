@@ -165,6 +165,7 @@ class Computer_Brain:
                 return (best_move , maxAlpha)
 
         return generate_agent(state_game , cur_point , depth)[0]
+    
     def random_algo(self , state_game):
         pos = 0
         if self.player_id:
