@@ -4,7 +4,7 @@ from math import gamma, pi as PI
 from Computer_Brain import *
 from pygame import mouse
 from CauHinh import *
-from BangGame import table
+from BangGame import Table
 from BangGame import *
 
 background = pygame.image.load(os.path.join(RES,'background.png'))
@@ -26,8 +26,11 @@ COLOR= color()
 def text_to_screen(screen , text ,x ,y,fontsize, color):
     try:
         pygame.font.init()
-        myfont = pygame.font.sysfont('Arial' , fontsize)
+
+        myfont = pygame.font.SysFont('Arial' , fontsize)
+
         textsurface = myfont.render(text , True, color)
+
         screen.blit(textsurface, (x, y))
     except Exception as e:
         print ("This font hadn't exist in this system\nPlease ensure that you type correctly this font")
@@ -62,7 +65,7 @@ def buttonpress(marginleft , screen , marginright , marginup , margindown , xbut
     return move
 
 
-class User_Interface(Table()):
+class User_Interface(Table):
 
     def __init__(self , screen  = None):
         super().__init__()
@@ -87,27 +90,27 @@ class User_Interface(Table()):
 
 
         # So quan trong cac o thuong
-        text_to_screen(self.screen, str(self.state[11][0]), 170, 150, 20, COLOR.ORANGE) #No. 11
-        text_to_screen(self.screen, str(self.state[10][0]), 270, 150, 20, COLOR.ORANGE) #No. 10
-        text_to_screen(self.screen, str(self.state[9][0]), 370, 150, 20, COLOR.ORANGE) #No. 9
-        text_to_screen(self.screen, str(self.state[8][0]), 470, 150, 20, COLOR.ORANGE) #No. 8
-        text_to_screen(self.screen, str(self.state[7][0]), 570, 150, 20, COLOR.ORANGE) #No. 7
-        text_to_screen(self.screen, str(self.state[1][0]), 170, 250, 20, COLOR.ORANGE) #No. 1
-        text_to_screen(self.screen, str(self.state[2][0]), 270, 250, 20, COLOR.ORANGE) #No. 2
-        text_to_screen(self.screen, str(self.state[3][0]), 370, 250, 20, COLOR.ORANGE) #No. 3
-        text_to_screen(self.screen, str(self.state[4][0]), 470, 250, 20, COLOR.ORANGE) #No. 4
-        text_to_screen(self.screen, str(self.state[5][0]), 570, 250, 20, COLOR.ORANGE) #No. 5 
+        text_to_screen(self.screen, str(self.state[11][0]), 170, 150, 20, COLOR.orange) #No. 11
+        text_to_screen(self.screen, str(self.state[10][0]), 270, 150, 20, COLOR.orange) #No. 10
+        text_to_screen(self.screen, str(self.state[9][0]), 370, 150, 20, COLOR.orange) #No. 9
+        text_to_screen(self.screen, str(self.state[8][0]), 470, 150, 20, COLOR.orange) #No. 8
+        text_to_screen(self.screen, str(self.state[7][0]), 570, 150, 20, COLOR.orange) #No. 7
+        text_to_screen(self.screen, str(self.state[1][0]), 170, 250, 20, COLOR.orange) #No. 1
+        text_to_screen(self.screen, str(self.state[2][0]), 270, 250, 20, COLOR.orange) #No. 2
+        text_to_screen(self.screen, str(self.state[3][0]), 370, 250, 20, COLOR.orange) #No. 3
+        text_to_screen(self.screen, str(self.state[4][0]), 470, 250, 20, COLOR.orange) #No. 4
+        text_to_screen(self.screen, str(self.state[5][0]), 570, 250, 20, COLOR.orange) #No. 5 
 
         #bang co theo thu tu tu trai sang phai theo moi voi 5 o quan co thuong se xuat hien mot o quan nhung vay
         #co the thay duoc neu bat dau la o quan o vi tri thu 0 thi theo chu ky o o thu 6 cua chung ta se tiep xuat
         #mot o quan nua
 
         # so quan trong trong cac o quan
-        text_to_screen(self.screen, str(abs(self.state[0][1] - 2)), 120, 170, 30, COLOR.ORANGE)
-        text_to_screen(self.screen, str(self.state[0][0]), 120, 230, 20, COLOR.ORANGE) #No. 0
+        text_to_screen(self.screen, str(abs(self.state[0][1] - 2)), 120, 170, 30, COLOR.orange)
+        text_to_screen(self.screen, str(self.state[0][0]), 120, 230, 20, COLOR.orange) #No. 0
 
-        text_to_screen(self.screen, str(abs(self.state[6][1] - 2)), 670, 170, 30, COLOR.ORANGE)
-        text_to_screen(self.screen, str(self.state[6][0]), 670, 230, 20, COLOR.ORANGE) #No. 6
+        text_to_screen(self.screen, str(abs(self.state[6][1] - 2)), 670, 170, 30, COLOR.orange)
+        text_to_screen(self.screen, str(self.state[6][0]), 670, 230, 20, COLOR.orange) #No. 6
 
         # Drawing the soldiers and Commander
         if (self.state[0][1] == 1):
@@ -147,3 +150,39 @@ class User_Interface(Table()):
                 self.screen.blit(Norm, (90 + 100*i , 300))
             if (self.state[i][0] >= 5):
                 self.screen.blit(Norm, (105 + 100*i , 285))
+            if (self.state[i][0] >= 6):
+                self.screen.blit(Norm, (105 + 100*i , 300))
+            if (self.state[i][0] >= 7):
+                self.screen.blit(Norm, (120 + 100*i , 285))
+            if (self.state[i][0] >=7 ):
+                self.screen.blit(Norm, (120 + 100*i , 300))
+            
+        #Set ways For Player 1
+
+        for i in range (7 , 12):
+            if (self.state[i][0] >= 1 ):
+                self.screen.blit(Norm, (75 + 100*(12-i) , 185))
+            if (self.state[i][0] >= 2):
+                self.screen.blit(Norm, (75 + 100*(12-i) , 200))
+            if (self.state[i][0] >= 3):
+                self.screen.blit(Norm, (90 + 100*(12-i) , 185))
+            if (self.state[i][0] >= 4):
+                self.screen.blit(Norm, (90 + 100*(12-i) , 200))
+            if (self.state[i][0] >= 5):
+                self.screen.blit (Norm, (105 + 100*(12-i) , 185))
+            if (self.state[i][0] >= 6):
+                self.screen.blit (Norm , (105 + 100*(12-i) , 200))
+            if (self.state[i][0] >= 7):
+                self.screen.blit (Norm , (120 + 100*(12-i) , 185))
+            if (self.state[i][0] >= 8 ):
+                self.screen.blit (Norm , (120 + 100*(12-i) , 200))
+
+        pygame.display.flip()
+
+    def redraw(self , turn):
+        self.__draw_table(turn)
+
+if __name__ == '__main__':
+    table = User_Interface()
+    table.redraw()
+    print(table)
