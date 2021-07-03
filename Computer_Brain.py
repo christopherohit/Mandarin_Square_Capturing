@@ -255,7 +255,7 @@ class Computer_Brain:
 
                     if isClick:
                         move[1] = 'l' if x < 510 else 'r'
-                elif 560 < x < 600:
+                elif 560 < x < 660:
                     move[0] = 5
                     if move[0] not in availabel_box:
                         continue
