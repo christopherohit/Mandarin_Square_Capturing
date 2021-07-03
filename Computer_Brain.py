@@ -1,14 +1,11 @@
 from math import trunc
 import pygame
 import os
-
 from pygame import mouse
- 
 from CauHinh import *
 from copy import deepcopy
 from random import shuffle, choice, randint
 from BangGame import fill_if_empty, finished , play_turn
-# from BangGame import fill_if_empty, finished, play_turn
 import time
 import sys
 
@@ -38,7 +35,6 @@ class Computer_Brain:
             else:
                 return(True,0)
         return (False, player_point[1] if self.player_id else player_point[0])
-
 
     def get_available_move(self, state , player_id):
         list_of_action = []
@@ -284,7 +280,6 @@ class Computer_Brain:
                 break
         return move[0], move[1]
 
-    
     def execute(self, state_game_, cur_point_, depth = 3):
         state_game , cur_point = deepcopy(state_game_), deepcopy(cur_point_)
         
