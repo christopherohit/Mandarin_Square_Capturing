@@ -1,6 +1,5 @@
 from GamePlay import GamePlay
+from Menu_Choose import Menu_Choose
 
 if __name__ == "__main__":
-    print("+-------- Mandarin_Square_Capturing-----------+")
-    game = GamePlay(algo_0=None , algo_1="expectimax")
-    game.run()
+    Menu_Choose.__init__()
