@@ -34,7 +34,7 @@
 
 - B1: Clone this code:
 
-  - git clone [Code Github](https://github.com/christopherohit/Mandarin_Square_Capturing.git)
+  - git clone URL: "https://github.com/christopherohit/Mandarin_Square_Capturing.git"
   
 - B2: Install Python 
 
