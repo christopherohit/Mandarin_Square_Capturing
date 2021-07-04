@@ -43,8 +43,10 @@
 - B3: Mở Visual Studio Code
 
   - Open file clone
+
+  - Type  "pip install pygame " tại Terminal 
   
-  - Run " *main.py "
+  - Run " main.py "
   
   <img src="https://user-images.githubusercontent.com/60256562/124342829-20deb680-dbf1-11eb-87f0-c885e1060067.png" width="250"  />
   
