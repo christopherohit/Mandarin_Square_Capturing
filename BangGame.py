@@ -19,8 +19,7 @@ def text_to_screen(screen , text , x , y, fontsize ,color): #Print Notification 
         screen.blit(textsurface, (x, y))
 
     except Exception as e:
-        print ("Font Error !!!\nPlease recheck your font and ensure that it correct")
-        raise e
+        PrintError()
     
 def ipos(pos, inc = 1 ):
     ''''''
@@ -44,6 +43,7 @@ def fill_if_empty(_state, _player_point):
 
 def finished(_state):
     return _state[0] == [0, 2] and _state[6] == [0, 2]
+
 def play_turn(_state , _player_point, _move , SLQuan = 5):
     state , player_point  = deepcopy(_state), deepcopy(_player_point)
     move = _move
@@ -149,10 +149,6 @@ class Table:
             return True
         else:
             return False
-
-    def redraw(self):
-    
-        return
 
     def play(self , move):
         self.state, self.player_points = play_turn(self.state, self.player_points , move)
