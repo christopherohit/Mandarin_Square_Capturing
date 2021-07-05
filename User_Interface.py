@@ -33,8 +33,7 @@ def text_to_screen(screen , text ,x ,y,fontsize, color):
 
         screen.blit(textsurface, (x, y))
     except Exception as e:
-        print ("This font hadn't exist in this system\nPlease ensure that you type correctly this font")
-        raise e
+        PrintError()
     
 def buttonpress(marginleft , screen , marginright , marginup , margindown , xbuttonleft , ybuttonleft , xbuttonright , ybuttonright , flag , move1, move0 , point): # Check stabilization of left and righ button i may be check event mouse hover of pointer
     if point:
@@ -78,15 +77,15 @@ class User_Interface(Table):
     def __draw_table(self,  turn):
         self.screen.fill((255,255,255))
         self.screen.blit(background, (0,0))
-        text_to_screen(self.screen, "Player 1" , 200, 60, 25, COLOR.darkred)
+        text_to_screen(self.screen, "Player 1 " , 200, 60, 25, COLOR.darkred)
         text_to_screen(self.screen ,str(self.player_points[1]), 370 , 40 , 50 , COLOR.darkred)
-        text_to_screen(self.screen , "Player 0" , 470 , 380 , 25 , COLOR.purple)
+        text_to_screen(self.screen , "Player 0 " , 470 , 380 , 25 , COLOR.purple)
         text_to_screen(self.screen , str(self.player_points[0]), 370 , 365 , 50 , COLOR.purple)
         
         if turn == 0:
-            text_to_screen(self.screen , "Player " + str(turn) + "is thinking ..." , 300, 450 , 20 , COLOR.purple)
+            text_to_screen(self.screen , "Player " + str(turn) + " is thinking ..." , 300, 450 , 20 , COLOR.purple)
         else:
-            text_to_screen(self.screen , "Player " + str(turn) + "is thinking ..." , 300 , 10 , 20 , COLOR.red)
+            text_to_screen(self.screen , "Player " + str(turn) + " is thinking ..." , 300 , 10 , 20 , COLOR.red)
 
 
         # So quan trong cac o thuong
