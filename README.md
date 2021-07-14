@@ -57,7 +57,7 @@
 ### Phần 3:Hướng dẫn chi tiết cách chơi:
 
 
-- B1: Sau khi run " *main.py " sẽ có xuất hiện các lựa chọn sau cho người chơi
+- B1: Sau khi run " main.py " sẽ có xuất hiện các lựa chọn sau cho người chơi
 
    - Play with Computer Medium
 
