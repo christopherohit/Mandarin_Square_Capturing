@@ -4,7 +4,7 @@ RES = 'res/'
 
 SCR_WIDTH = 800
 SCR_HEIGHT = 480
-SCR_NAME = 'Report For Game Theory'
+SCR_NAME = 'Report For Game Theory.'
 
 def PrintError():
     print("This Font Doesn't exist in this system\nPlease ensure that you are right when type it")
