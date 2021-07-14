@@ -1,16 +1,20 @@
+# Module này chịu trách nhiệm cho việc cấu hình nên các giao diện của trò chơi cũng như số lượng quân và số điểm
+# ngoài ra Module này còn chịu trách nhiệm cho việc cấu hình màu sắc và font của của trò chơi
+
+
 SLQuan = 5
 TienPhong = True
-RES = 'res/'
+RES = 'res/' # đường dẫn background cho chương trình
 
-SCR_WIDTH = 800
-SCR_HEIGHT = 480
-SCR_NAME = 'Report For Game Theory'
+SCR_WIDTH = 800 # Biểu thị chìêu rộng của cửa sổ game
+SCR_HEIGHT = 480 # Biểu thị chiều cao của cửa sổ game
+SCR_NAME = 'Report For Game Theory' # Tên của của sổ
 
 def PrintError():
     print("This Font Doesn't exist in this system\nPlease ensure that you are right when type it")
     
 
-class color():
+class color(): #Định dạng màu Sắc 
     white = (255,255,255)
     black = (0, 0, 0)
     red = (255, 0, 0)

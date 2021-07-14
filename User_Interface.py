@@ -10,13 +10,13 @@ from BangGame import *
 background = pygame.image.load(os.path.join(RES,'background.png'))
 
 
-#Defination Properties
+#Định dạng thuộc tính của các quân cờ 
 O_Thuong = (50, 50)
-O_Quan = (100 , 100) # Draw Elipse, (x,y)
+O_Quan = (100 , 100) # Vẽ hình vòng cung , (x,y)
 
-Norm = pygame.image.load(os.path.join(RES , 'dan.png'))
-Boss = pygame.image.load(os.path.join(RES , 'quan1.png'))
-SLQuan = 5
+Norm = pygame.image.load(os.path.join(RES , 'dan.png')) # Load ảnh Quân
+Boss = pygame.image.load(os.path.join(RES , 'quan1.png')) # Load ảnh quan
+SLQuan = 5 # Số lượng quân cho mỗi ô
 statistic = [0 ,0 ,0]
 Total_score = [0,0]
 Highest = [0,0]
@@ -74,7 +74,7 @@ class User_Interface(Table):
             self.screen = pygame.display.set_mode((SCR_WIDTH, SCR_HEIGHT))
             pygame.display.set_caption(SCR_NAME)
 
-    def __draw_table(self,  turn):
+    def __draw_table(self,  turn): # hiển thị tên người chơi và điểm
         self.screen.fill((255,255,255))
         self.screen.blit(background, (0,0))
         text_to_screen(self.screen, "Player 1 " , 200, 60, 25, COLOR.darkred)
@@ -178,7 +178,7 @@ class User_Interface(Table):
 
         pygame.display.flip()
 
-    def redraw(self , turn):
+    def redraw(self , turn): # tái tạo lại bảng game
         self.__draw_table(turn)
 
 if __name__ == '__main__':

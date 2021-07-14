@@ -17,7 +17,7 @@ def text_to_screen(screen , text , x ,y , fontsize , color ):
         issues = PrintError()
 
 class Menu_Choose:
-    def __init__():
+    def __init__(): # Hàm khởi tạo Menu cho phép người chơi chọn chế độ chơi cũng như dừng trò chơi
         while True:
             print('\n _---------------------------------_')
             print('\n_    Mandaring Square Capturing     _')

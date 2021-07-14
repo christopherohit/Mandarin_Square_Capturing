@@ -8,20 +8,23 @@ from random import shuffle, choice, randint
 from BangGame import fill_if_empty, finished , play_turn
 import time
 import sys
+# module này chủ yếu thể hiện về quy tắc vận hành của một bàn cờ và cách thức xử lý của máy tính khi gặp trường hợp
+# đặc biệt chủ yếu viết về cách xử lý trong bàn cờ
 
-LNavigation = pygame.image.load(os.path.join(RES, 'left.png'))
-RNavigation = pygame.image.load(os.path.join(RES, 'right.png'))
+
+LNavigation = pygame.image.load(os.path.join(RES, 'left.png')) # Di chuyển quân sang trái
+RNavigation = pygame.image.load(os.path.join(RES, 'right.png')) # Di chuyển quân sang phải
 
 class Computer_Brain:
-    def __init__(self , player_id , algo = None, screen = None , table = None):
-        self.INF = 70
-        self.SLQUAN = SLQuan
-        self.player_id = player_id
-        self.algo = algo
-        self.screen = screen
-        self.table = table
+    def __init__(self , player_id , algo = None, screen = None , table = None): # Khởi tạo trò chơi
+        self.INF = 70 # tổng sô điểm tối đa của trò chơi
+        self.SLQUAN = SLQuan # số quân được lấy từ CauHinh = 5
+        self.player_id = player_id # ID của người chơi thường là Player 0 và Player 1
+        self.algo = algo # Thuật toán được thi triển trong trò chơi nếu None là người chơi
+        self.screen = screen # Khởi tạo cửa sổ window
+        self.table = table # hiển thị bảng chi tiết trò chơi dưới dạng terminal
 
-    def Condition_Ending(self, state_, cur_point_): # Show Resutl that will be display you will win or Draw or lose
+    def Condition_Ending(self, state_, cur_point_): # Điều kiện để đưa ra kết luận rằng người chơi đã thắng hòa hay thua
         state, player_point = deepcopy(state_), deepcopy(cur_point_)
 
         if finished(state):
@@ -36,7 +39,7 @@ class Computer_Brain:
                 return(True,0)
         return (False, player_point[1] if self.player_id else player_point[0])
 
-    def get_available_move(self, state , player_id):
+    def get_available_move(self, state , player_id): #Kiểm tra những bước đi có thể đi trên bàn cờ
         list_of_action = []
 
         inc = 6 if player_id else 0
@@ -47,12 +50,12 @@ class Computer_Brain:
         shuffle(list_of_action)
         return list_of_action
     
-    def evaluation(self, state , cur_point , is_end):
+    def evaluation(self, state , cur_point , is_end): # Kiểm tra điều kiện dừng việc di chuyển trong một lượt hay còn gọi là kết thúc lượt
         if is_end[0]:
             return is_end[1] + cur_point[1] - cur_point[0] if self.player_id else is_end[1] + cur_point[0] - cur_point[1]
         return cur_point[1] - cur_point[0] if self.player_id else cur_point[0] - cur_point[1]
 
-    def generate_next_move(self , state__, move , cur_point_ , id):
+    def generate_next_move(self , state__, move , cur_point_ , id): # Khởi tạo bước đi trong bàn cờ
         state , cur_point = deepcopy(state__), deepcopy(cur_point_)
         inc = 1 if move[1] == 'r' else -1
         cur_pos = move[0]
@@ -162,7 +165,7 @@ class Computer_Brain:
 
         return generate_agent(state_game , cur_point , depth)[0]
     
-    def random_algo(self , state_game):
+    def random_algo(self , state_game): # sẽ chạy ngẫu nhiên trong 2 thuật toán Alphal beta và Expectimax để đấu với người chơi
         pos = 0
         if self.player_id:
             while True:
@@ -176,7 +179,33 @@ class Computer_Brain:
                     break
         return pos, choice(['l', 'r'])
 
-    def human(self, state_game , cur_point):
+    def human_2(self , state_game , cur_point): # Người chơi 2 theo hình thức đối kháng (Chưa hoàn thiện)
+        move = [None , None]
+        old_box = 0
+        self.table.redraw(0)
+        x, y = 0 , 0
+        isClick = False
+
+        availabel_box = []
+        for i in range(1 , 6):
+            if state_game[i][0] > 0:
+                availabel_box.append(i)
+        while True:
+            isClick = False
+            time.sleep(0.2)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == pygame.MOUSEMOTION or event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse = pygame.mouse.get_pos()
+                    x = mouse[0]
+                    y = mouse[1]
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        isClick = True
+
+    def human(self, state_game , cur_point): # Người chơi 1 theo hình thức đối kháng sẽ là lựa chọn mặc đinh nếu algo bên trên là None
         move = [None ,  None]
         old_box = 0
         self.table.redraw(0)
@@ -280,13 +309,16 @@ class Computer_Brain:
                 break
         return move[0], move[1]
 
-    def execute(self, state_game_, cur_point_, depth = 3):
+    def execute(self, state_game_, cur_point_, depth = 3): # Thực thi và xử lý input của người nhập từ đó thể hiện kết quả của người chơi
         state_game , cur_point = deepcopy(state_game_), deepcopy(cur_point_)
         
         if self.algo is None:
             return self.human(state_game , cur_point)
         elif self.algo == "random":
             return self.random_algo(state_game)
+
+        elif self.algo == "human":
+            return self.human(state_game , cur_point)
 
         elif self.algo == "alpha_beta":
             depth= 5 if len(self.get_available_move(state_game, self.player_id)) < 5 else depth
