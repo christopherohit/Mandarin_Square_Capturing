@@ -12,7 +12,7 @@
   - Cao Hoài Nhiên     -5951071070
 
 
-* Giảng viên hướng dẫn:  Thầy Nguyễn Đình Hiển
+* Giảng viên hướng dẫn:  TS. Nguyễn Đình Hiển
 
 
 * Lớp: Công nghệ thông tin-K59
@@ -61,11 +61,11 @@
 
    - Play with Computer Medium
 
-   - Play with random mode
+   - Play with Random Mode
    
    - Play With Computer Hard
    
-   - Play with another Player
+   - Play with Another Player
 
    - Exit Game.
    
