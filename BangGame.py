@@ -4,9 +4,11 @@ from CauHinh import *
 import os
 from copy import deepcopy
 import pygame
-from tkinter import * 
+from tkinter import *
 from tkinter import messagebox
 import time
+
+# Module này khởi tạo bàn cờ với số lượng quân việc xử lý phân bố cờ của người chơi
 
 
 COLOR = color()
@@ -28,13 +30,13 @@ def ipos(pos, inc = 1 ):
 def fill_if_empty(_state, _player_point):
     state, player_point = deepcopy(_state), deepcopy(_player_point)
 
-    if not any([i[0] for i in state[1:6]]): #Player 0 Often is a Bot
+    if not any([i[0] for i in state[1:6]]):
         player_point[0] -= 5
 
         for i in range(1,6):
             state[i][0] = 1
     
-    if not any([i[0] for i in state[7:12]]): # player 1 often a man
+    if not any([i[0] for i in state[7:12]]):
         player_point[1] -= 5
 
         for i in range(7,12):
@@ -64,10 +66,10 @@ def play_turn(_state , _player_point, _move , SLQuan = 5):
         state, player_point = fill_if_empty(state, player_point)
 
         if state[next_pos][1] or (state[next_pos][0] == 0 and state[ipos(next_pos, inc)][0] == 0 and state[ipos(next_pos,inc)][1] != 1):
-            #End Of this Turn
+            #Kết thúc lượt chơi
             break
         elif state[next_pos][0] == 0 and (state[ipos(next_pos, inc)][0] or state[ipos(next_pos, inc)][1] == 1):
-            #Earn point
+            #Ghi điểm
             if state[ipos(next_pos , inc)][1] == 1:
                 player_point[player] += SLQuan
                 state[ipos(next_pos ,inc)][1] = 2
@@ -76,12 +78,12 @@ def play_turn(_state , _player_point, _move , SLQuan = 5):
             state[ipos(next_pos,inc)][0] = 0
 
             temp_pos = ipos(ipos(next_pos , inc) , inc)
-            if state[temp_pos][0] == 0 and state[temp_pos][1] != 1: # This Field Empty or not have anything to move
+            if state[temp_pos][0] == 0 and state[temp_pos][1] != 1: # Kiểm tra ô trên bàn cờ đang trống hay không
                 next_pos = temp_pos
             else:
                 break
         else:
-            #Continue ditribution point to another field
+            #Tiếp tục phân phối sỏi tới các ô khác trên bàn cờ
             cur_pos = next_pos
             next_pos = ipos(cur_pos,inc)
 
@@ -92,13 +94,13 @@ def play_turn(_state , _player_point, _move , SLQuan = 5):
     return state , player_point
 
 class Table:
-    def __init__(self) :
+    def __init__(self) : #Khơi tạo bảng game 2 Chiều
         self.state = [[0, 1], [5, 0],[5, 0],[5, 0],[5, 0],[5, 0],
                       [0, 1], [5, 0],[5, 0],[5, 0],[5, 0],[5, 0]]
         self.player_points = [0, 0]
         self.SLquan = SLQuan
 
-    def __str__(self):
+    def __str__(self): #định dạng bảng game
         return '''
             11 10  9  8  7  6 
         +--+--------------+--+
@@ -127,7 +129,7 @@ class Table:
                 self.player_points[0], self.player_points[1]
         )
 
-    def finished(self):
+    def finished(self): # Điền Kiện và Thông Báo kết trò chơi
         '''This Definitation will use whenever this game finished'''
         if finished(self.state):
             if self.player_points[0] > self.player_points[1]:
@@ -150,7 +152,7 @@ class Table:
         else:
             return False
 
-    def play(self , move):
+    def play(self , move): #Rải sỏi
         self.state, self.player_points = play_turn(self.state, self.player_points , move)
         if finished(self.state):
             self.player_points[0] += sum([self.state[i][0] for i in range(1 , 6)])
