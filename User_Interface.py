@@ -14,8 +14,9 @@ background = pygame.image.load(os.path.join(RES,'background.png'))
 O_Thuong = (50, 50)
 O_Quan = (100 , 100) # Vẽ hình vòng cung , (x,y)
 
-Norm = pygame.image.load(os.path.join(RES , 'dan.png')) # Load ảnh Quân
+Norm = pygame.image.load(os.path.join(RES , 'dan.png')) # Load ảnh Dân
 Boss = pygame.image.load(os.path.join(RES , 'quan1.png')) # Load ảnh quan
+Boss2 = pygame.image.load(os.path.join(RES , 'quan.png'))
 SLQuan = 5 # Số lượng quân cho mỗi ô
 statistic = [0 ,0 ,0]
 Total_score = [0,0]
@@ -114,9 +115,8 @@ class User_Interface(Table):
         # Drawing the soldiers and Commander
         if (self.state[0][1] == 1):
             self.screen.blit(Boss , (80 , 200))
-        elif (self.state[6][1] == 1):
-            self.screen.blit(Boss , (685 , 200))
-
+            self.screen.blit(Boss2, (685 , 200))
+            
            # Dat soi quan tren o ben trai
         if (self.state[0][0] >= 1): self.screen.blit(Norm, (130, 260))
         if (self.state[0][0] >= 2): self.screen.blit(Norm, (130, 275))
