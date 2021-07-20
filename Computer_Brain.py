@@ -139,6 +139,7 @@ class Computer_Brain:
         return self.get_available_move(state_game , self.player_id)[0] if opt_action == None else opt_action
 
     def expectimax(self ,state_game, cur_point, depth=  3): # Expectimax Algorithm
+        
         def generate_agent(state_game , cur_point, depth, idx_agent = 0):
             is_end = self.Condition_Ending(state_game, cur_point)
             if is_end[0] or depth == 0:

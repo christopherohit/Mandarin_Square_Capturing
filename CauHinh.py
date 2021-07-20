@@ -2,7 +2,7 @@
 # ngoài ra Module này còn chịu trách nhiệm cho việc cấu hình màu sắc và font của của trò chơi
 
 
-SLQuan = 5
+SLQuan = 10
 TienPhong = True
 RES = 'res/' # đường dẫn background cho chương trình
 
